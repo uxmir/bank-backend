@@ -20,6 +20,8 @@ const userSchema = new mongoose.Schema({
     minLength: [6, "Password is minimum 6 caracters"],
     select: false,
   },
+},{
+  timestamps:true
 });
 
 userSchema.pre("save", async function () {
