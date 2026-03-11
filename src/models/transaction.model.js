@@ -17,7 +17,8 @@ const transactionSchema = new mongoose.Schema(
     status: {
       type: String,
       enum: {
-        values: ["PENDING", "COMPLETED", "FAILED"],
+        values: ["PENDING", "COMPLETED", "FAILED","REVERSED"],
+        message:'status must be pending or completed or failed or reveresed'
       },
       default: "PENDING",
     },
@@ -30,6 +31,7 @@ const transactionSchema = new mongoose.Schema(
       type: String,
       required: [true, "itempotency key is required for transaction"],
       index: true,
+      unique:true
     },
   },
   {
